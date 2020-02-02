@@ -3,38 +3,67 @@ import PrincessCard from "./cards/card";
 import princess from "./princesses/princesses.json";
 import Header from "./header/header";
 import Score from "./Score/score";
+import Wrapper from "./wrapper/wrapper";
 //import './App.css';
 
 
-class App extends Component {
-  state = {
-    princess,
-    currentScore: 0,
-    clicked: false
-  };
+// class App extends Component {
+//   state = {
+//     princess,
+//     currentScore: 0,
+//     clicked: false
+//   };
 
-  handleClick = id => {
-    this.princessShuffle();
-    this.princessScore(id);
-  };
+//   princessClick = id => {
+//     this.princessShuffle();
+//     this.princessScore(id);
+//   };
 
-  princessScore = id => {
+//   princessScoreBoard = id => { 
+//     this.state.princess.forEach(element => {
+//       if (id === element.id && element.clicked === false) {
+//         elelment.clicked = true;
+//         this.setState({ Clicked: false });
+//         this.addScore();
+//       }
+//       // else (id === element.id && element.clicked === true) {
+//       //   if (this.state.currentScore)
+//       // }
+//       this.setState({ currentScore: 0 });
+//       this.setState({ Clicked: true });
+//       this.state.princess.forEach(element => (element.clicked = false));
+//       console.log("princess card has been picked");
+//     });
+//   };
+//   princessShuffle = () => {
+//     const shuffleJson = this.shuffle(this.state.princess);
+//     this.setState({ shuffleJson });
+//   };
 
-  }
-
+//   // shuffle = array => {
+//   //   var currentIndex = array.length,
+    
+//   // }
+  
+//   addScore = () => {
+//     this.setState({ currentScore: this.state.currentScore + 1 })
+//   }
   render() {
     return (
-      <Header />
-      <Score />
-      {this.state.princess.map(princess =>
+      <Wrapper>
+        <Header/>
+        <Score
+        currentScore={this.state.currentScore} />
         <PrincessCard
-        Clicked={this.state.Clicked}
-        handleClick={this.handleClick}
-        id={princesses.id}
-        )}/>
-    );
+        princessClick={this.princess}
+        id={princess.id}
+        key={princess.id}
+        name={princess.name}
+        image={princess.image} />
+      </Wrapper>
+    )
   }
-}
+
 
 
 export default App;
